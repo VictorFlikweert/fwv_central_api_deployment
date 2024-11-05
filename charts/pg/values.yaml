@@ -1,33 +1,4 @@
-# rabbitmq:
-#   replicaCount: 1
-
-#   image:
-#     repository: rabbitmq
-#     tag: "4.0.2-management" # Use the management version
-#     pullPolicy: IfNotPresent
-
-#   service:
-#     enabled: true
-#     type: ClusterIP
-#     port: 5672
-#     managementPort: 15672
-
-#   credentials:
-#     username: user
-#     password: password # Change this to a more secure password in production
-#     vhost: /
-
-#   resources: {}
-
-# grafana:
-#   replicaCount: 1
-
-#   image:
-#     repository: grafana
-#     tag: grafana-enterprise
-#     pullPolicy: IfNotPresent
- 
-postgres-db:
+postgresdb:
   replicaCount: 1
 
   image:
@@ -50,7 +21,7 @@ postgres-db:
       - ReadWriteOnce
     storageClassName: standard  # Adjust this if you have a specific storage class; "standard" is common
 
-pg-admin:
+pgadmin:
   replicaCount: 1
 
   image:

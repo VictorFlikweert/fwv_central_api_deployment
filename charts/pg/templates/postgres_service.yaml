@@ -5,9 +5,9 @@ metadata:
   labels:
     app: {{ include "fwv_central_api_chart.name" . }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.postgresdb.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.port }}
+    - port: {{ .Values.postgresdb.service.port }}
+      targetPort: {{ .Values.postgresdb.service.port }}
   selector:
     app: {{ include "fwv_central_api_chart.name" . }}

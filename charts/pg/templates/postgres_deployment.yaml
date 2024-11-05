@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ include "fwv_central_api_chart.name" . }}
 spec:
-  replicas: {{ .Values.postgres-db.replicaCount }}
+  replicas: {{ .Values.postgresdb.replicaCount }}
   selector:
     matchLabels:
       app: {{ include "fwv_central_api_chart.name" . }}-postgres
@@ -16,15 +16,15 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: {{ .Values.postgres-db.image.repository }}:{{ .Values.postgres-db.image.tag }}
-          imagePullPolicy: {{ .Values.postgres-db.image.pullPolicy }}
+          image: {{ .Values.postgresdb.image.repository }}:{{ .Values.postgresdb.image.tag }}
+          imagePullPolicy: {{ .Values.postgresdb.image.pullPolicy }}
           env:
             - name: POSTGRES_USER
-              value: {{ .Values.postgres-db.credentials.username }}
+              value: {{ .Values.postgresdb.credentials.username }}
             - name: POSTGRES_PASSWORD
-              value: {{ .Values.postgres-db.credentials.password }}
+              value: {{ .Values.postgresdb.credentials.password }}
           ports:
-            - containerPort: {{ .Values.postgres-db.service.port }}
+            - containerPort: {{ .Values.postgresdb.service.port }}
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
