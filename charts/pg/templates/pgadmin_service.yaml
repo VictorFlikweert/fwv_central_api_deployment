@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "fwv_central_api_chart.fullname" . }}-pgadmin
 spec:
-  type: {{ .Values.pg-admin.service.type | default "ClusterIP" }}
+  type: {{ .Values.pgadmin.service.type | default "ClusterIP" }}
   ports:
     - port: 80
       targetPort: 80

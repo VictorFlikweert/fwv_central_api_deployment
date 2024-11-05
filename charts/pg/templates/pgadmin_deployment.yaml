@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ include "fwv_central_api_chart.name" . }}
 spec:
-  replicas: {{ .Values.pg-admin.replicaCount }}
+  replicas: {{ .Values.pgadmin.replicaCount }}
   selector:
     matchLabels:
       app: {{ include "fwv_central_api_chart.name" . }}-pgadmin
@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
         - name: pgadmin
-          image: "{{ .Values.pg-admin.image.repository }}:{{ .Values.pg-admin.image.tag }}"
-          imagePullPolicy: {{ .Values.pg-admin.image.pullPolicy }}
+          image: {{ .Values.pgadmin.image.repository }}:{{ .Values.pgadmin.image.tag }}
+          imagePullPolicy: {{ .Values.pgadmin.image.pullPolicy }}
           env:
             - name: PGADMIN_DEFAULT_EMAIL
-              value: {{ .Values.pg-admin.credentials.email }}
+              value: {{ .Values.pgadmin.credentials.email }}
             - name: PGADMIN_DEFAULT_PASSWORD
-              value: {{ .Values.pg-admin.credentials.password }}
+              value: {{ .Values.pgadmin.credentials.password }}
           ports:
             - containerPort: 80

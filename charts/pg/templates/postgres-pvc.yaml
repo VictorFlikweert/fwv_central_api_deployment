@@ -3,8 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ include "fwv_central_api_chart.fullname" . }}-postgres-pvc
 spec:
-  accessModes: {{ .Values.postgres-db.storage.accessModes }}
+  accessModes: {{ .Values.postgresdb.storage.accessModes }}
   resources:
     requests:
-      storage: {{ .Values.postgres-db.storage.size }}
-  storageClassName: {{ .Values.postgres-db.storage.storageClassName }}
+      storage: {{ .Values.postgresdb.storage.size }}
+  storageClassName: {{ .Values.postgresdb.storage.storageClassName }}
