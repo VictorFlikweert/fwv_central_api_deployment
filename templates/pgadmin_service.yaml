@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "fwv_central_api_chart.fullname" . }}-pgadmin
+spec:
+  type: {{ .Values.pg-admin.service.type | default "ClusterIP" }}
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: {{ include "fwv_central_api_chart.name" . }}-pgadmin

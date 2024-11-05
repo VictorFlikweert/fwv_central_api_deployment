@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fwv_central_api_chart.fullname" . }}-pgadmin
+  labels:
+    app: {{ include "fwv_central_api_chart.name" . }}
+spec:
+  replicas: {{ .Values.pg-admin.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "fwv_central_api_chart.name" . }}-pgadmin
+  template:
+    metadata:
+      labels:
+        app: {{ include "fwv_central_api_chart.name" . }}-pgadmin
+    spec:
+      containers:
+        - name: pgadmin
+          image: "{{ .Values.pg-admin.image.repository }}:{{ .Values.pg-admin.image.tag }}"
+          imagePullPolicy: {{ .Values.pg-admin.image.pullPolicy }}
+          env:
+            - name: PGADMIN_DEFAULT_EMAIL
+              value: {{ .Values.pg-admin.credentials.email }}
+            - name: PGADMIN_DEFAULT_PASSWORD
+              value: {{ .Values.pg-admin.credentials.password }}
+          ports:
+            - containerPort: 80

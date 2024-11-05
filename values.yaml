@@ -1,0 +1,63 @@
+# rabbitmq:
+#   replicaCount: 1
+
+#   image:
+#     repository: rabbitmq
+#     tag: "4.0.2-management" # Use the management version
+#     pullPolicy: IfNotPresent
+
+#   service:
+#     enabled: true
+#     type: ClusterIP
+#     port: 5672
+#     managementPort: 15672
+
+#   credentials:
+#     username: user
+#     password: password # Change this to a more secure password in production
+#     vhost: /
+
+#   resources: {}
+
+# grafana:
+#   replicaCount: 1
+
+#   image:
+#     repository: grafana
+#     tag: grafana-enterprise
+#     pullPolicy: IfNotPresent
+ 
+postgres-db:
+  replicaCount: 1
+
+  image:
+    repository: postgres
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  credentials:
+     username: postgres
+     password: Password1!
+
+  service:
+    enabled: true
+    type: ClusterIP
+    port: 5432
+
+  storage:
+    size: 1Gi  # Specify the storage size you need
+    accessModes:
+      - ReadWriteOnce
+    storageClassName: standard  # Adjust this if you have a specific storage class; "standard" is common
+
+pg-admin:
+  replicaCount: 1
+
+  image:
+    repository: dpage/pgadmin4
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  credentials:
+    email: admin@flikweertvision.nl
+    password: admin
