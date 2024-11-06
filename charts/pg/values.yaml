@@ -32,3 +32,6 @@ pgadmin:
   credentials:
     email: admin@flikweertvision.nl
     password: admin
+
+  service:
+    type: ClusterIP
