@@ -34,4 +34,4 @@ pgadmin:
     password: admin
 
   service:
-    type: ClusterIP
+    type: NodePort
