@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "fwv_central_api_chart.fullname" . }}-pgadmin
+  name: {{ include "fwv-central-api-chart.fullname" . }}-pgadmin
   labels:
-    app: {{ include "fwv_central_api_chart.name" . }}
+    app: {{ include "fwv-central-api-chart.name" . }}
 spec:
   replicas: {{ .Values.pgadmin.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "fwv_central_api_chart.name" . }}-pgadmin
+      app: {{ include "fwv-central-api-chart.name" . }}-pgadmin
   template:
     metadata:
       labels:
-        app: {{ include "fwv_central_api_chart.name" . }}-pgadmin
+        app: {{ include "fwv-central-api-chart.name" . }}-pgadmin
     spec:
       containers:
         - name: pgadmin

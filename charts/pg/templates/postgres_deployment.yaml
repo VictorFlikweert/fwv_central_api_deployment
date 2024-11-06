@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "fwv_central_api_chart.fullname" . }}-postgres
+  name: {{ include "fwv-central-api-chart.fullname" . }}-postgres
   labels:
-    app: {{ include "fwv_central_api_chart.name" . }}
+    app: {{ include "fwv-central-api-chart.name" . }}
 spec:
   replicas: {{ .Values.postgresdb.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "fwv_central_api_chart.name" . }}-postgres
+      app: {{ include "fwv-central-api-chart.name" . }}-postgres
   template:
     metadata:
       labels:
-        app: {{ include "fwv_central_api_chart.name" . }}-postgres
+        app: {{ include "fwv-central-api-chart.name" . }}-postgres
     spec:
       containers:
         - name: postgres
@@ -31,4 +31,4 @@ spec:
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
-            claimName: {{ include "fwv_central_api_chart.fullname" . }}-postgres-pvc
+            claimName: {{ include "fwv-central-api-chart.fullname" . }}-postgres-pvc

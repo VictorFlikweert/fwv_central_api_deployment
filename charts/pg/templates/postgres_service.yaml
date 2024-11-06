@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "fwv_central_api_chart.fullname" . }}
+  name: {{ include "fwv-central-api-chart.fullname" . }}
   labels:
-    app: {{ include "fwv_central_api_chart.name" . }}
+    app: {{ include "fwv-central-api-chart.name" . }}
 spec:
   type: {{ .Values.postgresdb.service.type }}
   ports:
     - port: {{ .Values.postgresdb.service.port }}
       targetPort: {{ .Values.postgresdb.service.port }}
   selector:
-    app: {{ include "fwv_central_api_chart.name" . }}
+    app: {{ include "fwv-central-api-chart.name" . }}
