@@ -60,7 +60,7 @@ fwvconsumer:
     rmq_host: rmq
     rmq_port: 5672
 
-  volumeMount:
-    backupPath: "/backups"
-    pvcName: "nas-backup-claim"  # PVC name for backup volume
+  # volumeMount:
+  #   backupPath: "/backups"
+  #   pvcName: "nas-backup-claim"  # PVC name for backup volume
 
