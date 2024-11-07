@@ -3,6 +3,16 @@ entries:
   fwv-central-api-chart:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2024-11-07T13:01:06.974256543Z"
+    description: A Helm chart for Kubernetes
+    digest: 2239b41b1d8da936a3d0a0c0195615e1e728f48283d0f6e9b6a2897225e48aca
+    name: fwv-central-api-chart
+    type: application
+    urls:
+    - https://github.com/VictorFlikweert/fwv_central_api_deployment/releases/download/fwv-central-api-chart-0.1.19/fwv-central-api-chart-0.1.19.tgz
+    version: 0.1.19
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2024-11-07T12:57:23.162562475Z"
     description: A Helm chart for Kubernetes
     digest: 4c5a2a1483af430615ab23babf4afb6d7133faf336f39cfa059196c79aa488fd
@@ -182,4 +192,4 @@ entries:
     urls:
     - https://github.com/VictorFlikweert/fwv_central_api_deployment/releases/download/fwv_central_api_chart-0.1.1/fwv_central_api_chart-0.1.1.tgz
     version: 0.1.1
-generated: "2024-11-07T12:57:23.162684404Z"
+generated: "2024-11-07T13:01:06.974380996Z"
