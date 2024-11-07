@@ -62,5 +62,5 @@ fwvconsumer:
 
   volumeMount:
     backupPath: "/backups"
-    pvcName: "nas-backup-pvc"  # PVC name for backup volume
+    pvcName: "nas-backup-claim"  # PVC name for backup volume
 
