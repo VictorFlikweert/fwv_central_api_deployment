@@ -47,10 +47,3 @@ spec:
               value: "{{ .Values.fwvconsumer.environment.rmq_host }}"
             - name: RMQ_PORT
               value: "{{ .Values.fwvconsumer.environment.rmq_port }}"
-        #   volumeMounts:
-        #     - name: nas-backup
-        #       mountPath: {{ .Values.fwvconsumer.volumeMount.backupPath }}
-    #   volumes:
-    #     - name: nas-backup
-    #       persistentVolumeClaim:
-    #         claimName: {{ .Values.fwvconsumer.volumeMount.pvcName }}
