@@ -40,7 +40,7 @@ fwvconsumer:
   replicaCount: 1
 
   image: 
-    repository: flikweertvision/fv_consumer
+    repository: docker.io/flikweertvision/fv_consumer
     tag: latest
     pullPolicy: IfNotPresent
   
