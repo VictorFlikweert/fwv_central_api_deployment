@@ -19,7 +19,7 @@ postgresdb:
     size: 1Gi  # Specify the storage size you need
     accessModes:
       - ReadWriteOnce
-    storageClassName: standard  # Adjust this if you have a specific storage class; "standard" is common
+    storageClassName: local-path  # Adjust this if you have a specific storage class; "standard" is common
 
 pgadmin:
   replicaCount: 1
