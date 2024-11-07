@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-fvconsumer
+  name: {{ .Release.Name }}-fwvconsumer
   labels:
     app: fwvconsumer
 spec:
-  replicas: {{ .Values.fvconsumer.replicaCount }}
+  replicas: {{ .Values.fwvconsumer.replicaCount }}
   selector:
     matchLabels:
       app: fwvconsumer
