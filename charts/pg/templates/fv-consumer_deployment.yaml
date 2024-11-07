@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-fv-consumer
+  labels:
+    app: fv-consumer
+spec:
+  replicas: {{ .Values.fv-consumer.replicaCount }}
+  selector:
+    matchLabels:
+      app: fv-consumer
+  template:
+    metadata:
+      labels:
+        app: fv-consumer
+    spec:
+      containers:
+        - name: fv-consumer
+          image: "{{ .Values.fv-consumer.image.repository }}:{{ .Values.fv-consumer.image.tag }}"
+          imagePullPolicy: "{{ .Values.fv-consumer.image.pullPolicy }}"
+          env:
+            - name: POSTGRES_DB_HOST
+              value: "{{ .Values.fv-consumer.environment.pg_db_host }}"
+            - name: POSTGRES_DB_USER
+              value: "{{ .Values.fv-consumer.environment.pg_db_user }}"
+            - name: POSTGRES_DB_PASSWORD
+              value: "{{ .Values.fv-consumer.environment.pg_db_password }}"
+            - name: POSTGRES_DB_PORT
+              value: "{{ .Values.fv-consumer.environment.pg_db_port }}"
+            - name: POSTGRES_DB_NAME
+              value: "{{ .Values.fv-consumer.environment.pg_db_name }}"
+            - name: MSSQL_DB_HOST
+              value: "{{ .Values.fv-consumer.environment.mssql_db_host }}"
+            - name: MSSQL_DB_USER
+              value: "{{ .Values.fv-consumer.environment.mssql_db_user }}"
+            - name: MSSQL_DB_PASSWORD
+              value: "{{ .Values.fv-consumer.environment.mssql_db_password }}"
+            - name: MSSQL_DB_DATABASE
+              value: "{{ .Values.fv-consumer.environment.mssql_db_database }}"
+            - name: MSSQL_DB_PORT
+              value: "{{ .Values.fv-consumer.environment.mssql_db_port }}"
+            - name: RMQ_USERNAME
+              value: "{{ .Values.fv-consumer.environment.rmq_username }}"
+            - name: RMQ_PASSWORD
+              value: "{{ .Values.fv-consumer.environment.rmq_password }}"
+            - name: RMQ_HOST
+              value: "{{ .Values.fv-consumer.environment.rmq_host }}"
+            - name: RMQ_PORT
+              value: "{{ .Values.fv-consumer.environment.rmq_port }}"
+          volumeMounts:
+            - name: nas-backup
+              mountPath: {{ .Values.fv-consumer.volumeMount.backupPath }}
+      volumes:
+        - name: nas-backup
+          persistentVolumeClaim:
+            claimName: {{ .Values.fv-consumer.volumeMount.pvcName }}
