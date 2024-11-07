@@ -17,6 +17,7 @@ spec:
       containers:
         - name: fwvconsumer
           image: "{{ .Values.fwvconsumer.image.repository }}:{{ .Values.fwvconsumer.image.tag }}"
+        
           imagePullPolicy: "{{ .Values.fwvconsumer.image.pullPolicy }}"
           env:
             - name: POSTGRES_DB_HOST
@@ -47,5 +48,5 @@ spec:
               value: "{{ .Values.fwvconsumer.environment.rmq_host }}"
             - name: RMQ_PORT
               value: "{{ .Values.fwvconsumer.environment.rmq_port }}"
-          imagePullSecrets:
-            - name: regcred
+      imagePullSecrets:
+        - name: regcred    
