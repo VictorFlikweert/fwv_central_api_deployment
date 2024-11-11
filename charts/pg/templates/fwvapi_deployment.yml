@@ -35,11 +35,11 @@ spec:
             - name: MSSQL_DB_DATABASE
               value: "{{ .Values.fwvapi.environment.mssql_db_database }}"
             - name: PGSQL_DB_PASSWORD
-              value: "{{ .Values.fwvapi.environment.pg_db_password }}"
+              value: "{{ .Values.postgresdb.credentials.password }}"
             - name: PGSQL_DB_SERVER
-              value: "{{ .Values.fwvapi.environment.pg_db_host }}"
+              value: "postgresdb"
             - name: PGSQL_DB_PORT
-              value: "{{ .Values.fwvapi.environment.pg_db_port }}"
+              value: "{{ .Values.postgresdb.service.port }}"
             - name: RMQ_USERNAME
               value: "{{ .Values.fwvapi.environment.rmq_username }}"
             - name: RMQ_PASSWORD

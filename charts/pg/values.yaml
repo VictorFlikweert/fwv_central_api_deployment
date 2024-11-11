@@ -61,10 +61,6 @@ fwvconsumer:
     rmq_host: rmq
     rmq_port: 5672
 
-  # volumeMount:
-  #   backupPath: "/backups"
-  #   pvcName: "nas-backup-claim"  # PVC name for backup volume
-
 fwvapi:
   replicaCount: 1
 
@@ -80,9 +76,6 @@ fwvapi:
     mssql_db_user: ""
     mssql_db_password: ""
     mssql_db_database: ""
-    pg_db_password: ""
-    pg_db_host: ""
-    pg_db_port: ""
     rmq_username: "fv_api"
     rmq_password: "fv_api"
     rmq_host: ""
@@ -118,4 +111,4 @@ grafana:
     repository: grafana/grafana-enterprise
     tag: latest
     pullPolicy: IfNotPresent
-    
+
