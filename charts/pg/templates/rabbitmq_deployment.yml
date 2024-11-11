@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-rmq
+  name: {{ .Release.Name }}-rabbitmq
   labels:
-    app: rmq
+    app: rabbitmq
 spec:
-  replicas: {{ .Values.rmq.replicaCount }}
+  replicas: {{ .Values.rabbitmq.replicaCount }}
   selector:
     matchLabels:
-      app: rmq
+      app: rabbitmq
   template:
     metadata:
       labels:
-        app: rmq
+        app: rabbitmq
     spec:
       containers:
-        - name: rmq
-          image: "{{ .Values.rmq.image.repository }}:{{ .Values.rmq.image.tag }}"
+        - name: rabbitmq
+          image: "{{ .Values.rabbitmq.image.repository }}:{{ .Values.rabbitmq.image.tag }}"
         
-          imagePullPolicy: "{{ .Values.rmq.image.pullPolicy }}"
+          imagePullPolicy: "{{ .Values.rabbitmq.image.pullPolicy }}"
