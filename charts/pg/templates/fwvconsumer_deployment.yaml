@@ -49,4 +49,4 @@ spec:
             - name: RMQ_PORT
               value: "{{ .Values.fwvconsumer.environment.rmq_port }}"
       imagePullSecrets:
-        - name: regcred    
+        - name: flikweert-vision
