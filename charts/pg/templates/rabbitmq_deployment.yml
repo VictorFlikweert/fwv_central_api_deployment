@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-rmq
+  labels:
+    app: rmq
+spec:
+  replicas: {{ .Values.rmq.replicaCount }}
+  selector:
+    matchLabels:
+      app: rmq
+  template:
+    metadata:
+      labels:
+        app: rmq
+    spec:
+      containers:
+        - name: rmq
+          image: "{{ .Values.rmq.image.repository }}:{{ .Values.rmq.image.tag }}"
+        
+          imagePullPolicy: "{{ .Values.rmq.image.pullPolicy }}"

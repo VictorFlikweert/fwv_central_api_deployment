@@ -112,3 +112,10 @@ grafana:
     tag: latest
     pullPolicy: IfNotPresent
 
+rabbitmq:
+  replicaCount: 1
+
+  image:
+    repository: rabbitmq
+    tag: 4.0.2-management
+    pullPolicy: IfNotPresent
