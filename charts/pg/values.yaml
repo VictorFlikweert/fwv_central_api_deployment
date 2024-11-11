@@ -35,6 +35,7 @@ pgadmin:
 
   service:
     type: NodePort
+    hostPort: 32500
 
 fwvconsumer:
   replicaCount: 1
@@ -64,3 +65,57 @@ fwvconsumer:
   #   backupPath: "/backups"
   #   pvcName: "nas-backup-claim"  # PVC name for backup volume
 
+fwvapi:
+  replicaCount: 1
+
+  image:
+    repository: docker.io/flikweertvision/fv-api
+    tag: latest
+    pullPolicy: IfNotPresent
+  
+  environment:
+    machine_password: ""
+    mssql_db_host: ""
+    mssql_db_port: ""
+    mssql_db_user: ""
+    mssql_db_password: ""
+    mssql_db_database: ""
+    pg_db_password: ""
+    pg_db_host: ""
+    pg_db_port: ""
+    rmq_username: "fv_api"
+    rmq_password: "fv_api"
+    rmq_host: ""
+    rmq_port: ""
+    SECRET_KEY: ""
+
+  volumes:
+    - "./management_data:/python-docker/data"
+    - "plc-backup:/plc_backups"
+    - "plc-update:/plc_updates"
+    - "nas-backup:/backups"
+
+prometheus:
+  replicaCount: 1
+
+  image:
+    repository: prom/prometheus
+    tag: latest
+    pullPolicy: IfNotPresent
+  
+alertmanager:
+  replicaCount: 1
+  
+  image:
+    repository: prom/alertmanager
+    tag: v0.23.0
+    pullPolicy: IfNotPresent
+
+grafana:
+  replicaCount: 1
+
+  image:
+    repository: grafana/grafana-enterprise
+    tag: latest
+    pullPolicy: IfNotPresent
+    

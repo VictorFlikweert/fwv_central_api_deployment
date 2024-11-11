@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fwv-central-api-chart.fullname" . }}-grafana
+  labels:
+    app: {{ include "fwv-central-api-chart.name" . }}
+spec:
+  replicas: {{ .Values.pgadmin.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "fwv-central-api-chart.name" . }}-grafana
+  template:
+    metadata:
+      labels:
+        app: {{ include "fwv-central-api-chart.name" . }}-grafana
+    spec:
+      containers:
+        - name: grafana
+          image: {{ .Values.grafana.image.repository }}:{{ .Values.grafana.image.tag }}
+          imagePullPolicy: {{ .Values.grafana.image.pullPolicy }}

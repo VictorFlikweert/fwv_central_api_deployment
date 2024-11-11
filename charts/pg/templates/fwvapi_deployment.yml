@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-fwvapi
+  labels:
+    app: fwvapi
+spec:
+  replicas: {{ .Values.fwvapi.replicaCount }}
+  selector:
+    matchLabels:
+      app: fwvapi
+  template:
+    metadata:
+      labels:
+        app: fwvapi
+    spec:
+      containers:
+        - name: fwvapi
+          image: "{{ .Values.fwvapi.image.repository }}:{{ .Values.fwvapi.image.tag }}"
+        
+          imagePullPolicy: "{{ .Values.fwvapi.image.pullPolicy }}"
+          env:
+            - name: PYTHONUNBUFFERED
+              value: "1"
+            - name: MACHINE_PASSWORD
+              value: "{{ .Values.fwvapi.environment.machine_password }}"
+            - name: MSSQL_DB_SERVER
+              value: "{{ .Values.fwvapi.environment.mssql_db_host }}"
+            - name: MSSQL_DB_PORT
+              value: "{{ .Values.fwvapi.environment.mssql_db_port }}"
+            - name: MSSQL_DB_USERNAME
+              value: "{{ .Values.fwvapi.environment.mssql_db_user }}"
+            - name: MSSQL_DB_PASSWORD
+              value: "{{ .Values.fwvapi.environment.mssql_db_password }}"
+            - name: MSSQL_DB_DATABASE
+              value: "{{ .Values.fwvapi.environment.mssql_db_database }}"
+            - name: PGSQL_DB_PASSWORD
+              value: "{{ .Values.fwvapi.environment.pg_db_password }}"
+            - name: PGSQL_DB_SERVER
+              value: "{{ .Values.fwvapi.environment.pg_db_host }}"
+            - name: PGSQL_DB_PORT
+              value: "{{ .Values.fwvapi.environment.pg_db_port }}"
+            - name: RMQ_USERNAME
+              value: "{{ .Values.fwvapi.environment.rmq_username }}"
+            - name: RMQ_PASSWORD
+              value: "{{ .Values.fwvapi.environment.rmq_password }}"
+            - name: RMQ_HOST
+              value: "{{ .Values.fwvapi.environment.rmq_host }}"
+            - name: RMQ_PORT
+              value: "{{ .Values.fwvapi.environment.rmq_port }}"
+            - name: SECRET_KEY
+              value: "{{ .Values.fwvapi.environment.SECRET_KEY }}"
+      imagePullSecrets:
+        - name: flikweert-vision

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fwv-central-api-chart.fullname" . }}-alertmanager
+  labels:
+    app: {{ include "fwv-central-api-chart.name" . }}
+spec:
+  replicas: {{ .Values.pgadmin.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "fwv-central-api-chart.name" . }}-alertmanager
+  template:
+    metadata:
+      labels:
+        app: {{ include "fwv-central-api-chart.name" . }}-alertmanager
+    spec:
+      containers:
+        - name: alertmanager
+          image: {{ .Values.alertmanager.image.repository }}:{{ .Values.alertmanager.image.tag }}
+          imagePullPolicy: {{ .Values.alertmanager.image.pullPolicy }}
