@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "fwv-central-api-chart.fullname" . }}-postgres-pvc
+  name: {{ include "fwv-central-api-chart.fullname" . }}-postgresdb-pvc
 spec:
   accessModes: {{ .Values.postgresdb.storage.accessModes }}
   resources:
