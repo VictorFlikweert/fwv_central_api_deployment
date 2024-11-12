@@ -37,7 +37,7 @@ spec:
             - name: PGSQL_DB_PASSWORD
               value: "{{ .Values.postgresdb.credentials.password }}"
             - name: PGSQL_DB_SERVER
-              value: {{ include "fwv-central-api-chart.name" . }}-postgresdb
+              value: {{ include "fwv-central-api-chart.fullname" . }}-postgresdb
             - name: PGSQL_DB_PORT
               value: "{{ .Values.postgresdb.service.port }}"
             - name: RMQ_USERNAME
