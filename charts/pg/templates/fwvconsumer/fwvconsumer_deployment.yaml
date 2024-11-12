@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-fwvconsumer
   labels:
-    app: fwvconsumer
+    app: {{ include "fwv-central-api-chart.name" . }}
 spec:
   replicas: {{ .Values.fwvconsumer.replicaCount }}
   selector:

@@ -5,8 +5,9 @@ metadata:
 spec:
   type: {{ .Values.rabbitmq.service.type | default "ClusterIP" }}
   ports:
-    - port: 80
-      targetPort: 80
+    - name: http_api
+      port: 15672
+      targetPort: 15672
       protocol: TCP
       nodePort: {{.Values.rabbitmq.hostPort}}
   selector:

@@ -34,7 +34,6 @@ pgadmin:
     password: admin
 
   service:
-    type: NodePort
     hostPort: 32500
 
 fwvconsumer:
@@ -113,6 +112,9 @@ rabbitmq:
     username: "rmuser"
     password: "rmpassword"
 
+  service:
+    type: 
+    hostPort: 32600
 
 mssql: 
   host: "" 

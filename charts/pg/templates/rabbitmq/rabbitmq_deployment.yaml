@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-rabbitmq
   labels:
-    app: rabbitmq
+    app: {{ include "fwv-central-api-chart.name" . }}
 spec:
   replicas: {{ .Values.rabbitmq.replicaCount }}
   selector:
