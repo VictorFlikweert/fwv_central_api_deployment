@@ -51,6 +51,6 @@ spec:
             - name: SECRET_KEY
               value: "{{ .Values.fwvapi.environment.SECRET_KEY }}"
         ports:
-            - containerPort: 5001
+          - containerPort: 5001
       imagePullSecrets:
         - name: flikweert-vision
