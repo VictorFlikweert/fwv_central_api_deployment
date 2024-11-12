@@ -82,6 +82,10 @@ fwvapi:
     rmq_port: ""
     SECRET_KEY: ""
 
+  service:
+    type: NodePort
+    hostPort: 32500
+
   volumes:
     - "./management_data:/python-docker/data"
     - "plc-backup:/plc_backups"
