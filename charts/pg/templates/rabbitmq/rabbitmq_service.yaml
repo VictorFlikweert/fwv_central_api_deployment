@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "fwv-central-api-chart.fullname" . }}-rabbitmq
+spec:
+  type: {{ .Values.rabbitmq.service.type | default "ClusterIP" }}
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      nodePort: {{.Values.rabbitmq.hostPort}}
+  selector:
+    app: {{ include "fwv-central-api-chart.name" . }}-rabbitmq

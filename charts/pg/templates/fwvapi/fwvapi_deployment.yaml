@@ -25,15 +25,15 @@ spec:
             - name: MACHINE_PASSWORD
               value: "{{ .Values.fwvapi.environment.machine_password }}"
             - name: MSSQL_DB_SERVER
-              value: "{{ .Values.fwvapi.environment.mssql_db_host }}"
+              value: "{{ .Values.mssql.host }}"
             - name: MSSQL_DB_PORT
-              value: "{{ .Values.fwvapi.environment.mssql_db_port }}"
+              value: "{{ .Values.mssql.port }}"
             - name: MSSQL_DB_USERNAME
-              value: "{{ .Values.fwvapi.environment.mssql_db_user }}"
+              value: "{{ .Values.mssql.credentials.user }}"
             - name: MSSQL_DB_PASSWORD
-              value: "{{ .Values.fwvapi.environment.mssql_db_password }}"
+              value: "{{ .Values.mssql.credentials.pass }}"
             - name: MSSQL_DB_DATABASE
-              value: "{{ .Values.fwvapi.environment.mssql_db_database }}"
+              value: "{{ .Values.mssql.database }}"
             - name: PGSQL_DB_PASSWORD
               value: "{{ .Values.postgresdb.credentials.password }}"
             - name: PGSQL_DB_SERVER

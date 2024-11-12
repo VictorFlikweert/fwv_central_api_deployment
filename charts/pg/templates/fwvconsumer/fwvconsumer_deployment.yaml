@@ -21,25 +21,25 @@ spec:
           imagePullPolicy: "{{ .Values.fwvconsumer.image.pullPolicy }}"
           env:
             - name: POSTGRES_DB_HOST
-              value: "{{ .Values.fwvconsumer.environment.pg_db_host }}"
+              value: {{ include "fwv-central-api-chart.fullname" . }}-postgresdb
             - name: POSTGRES_DB_USER
-              value: "{{ .Values.fwvconsumer.environment.pg_db_user }}"
+              value: "{{ .Values.postgresdb.credentials.username }}"
             - name: POSTGRES_DB_PASSWORD
-              value: "{{ .Values.fwvconsumer.environment.pg_db_password }}"
+              value: "{{ .Values.postgresdb.credentials.password }}"
             - name: POSTGRES_DB_PORT
-              value: "{{ .Values.fwvconsumer.environment.pg_db_port }}"
+              value: "{{ .Values.postgresdb.service.port }}"
             - name: POSTGRES_DB_NAME
-              value: "{{ .Values.fwvconsumer.environment.pg_db_name }}"
+              value: postgres
             - name: MSSQL_DB_HOST
-              value: "{{ .Values.fwvconsumer.environment.mssql_db_host }}"
+              value: "{{ .Values.mssql.host }}"
             - name: MSSQL_DB_USER
-              value: "{{ .Values.fwvconsumer.environment.mssql_db_user }}"
+              value: "{{ .Values.mssql.credentials.user }}"
             - name: MSSQL_DB_PASSWORD
-              value: "{{ .Values.fwvconsumer.environment.mssql_db_password }}"
+              value: "{{ .Values.mssql.credentials.pass }}"
             - name: MSSQL_DB_DATABASE
-              value: "{{ .Values.fwvconsumer.environment.mssql_db_database }}"
+              value: "{{ .Values.mssql.database }}"
             - name: MSSQL_DB_PORT
-              value: "{{ .Values.fwvconsumer.environment.mssql_db_port }}"
+              value: "{{ .Values.mssql.port }}"
             - name: RMQ_USERNAME
               value: "{{ .Values.fwvconsumer.environment.rmq_username }}"
             - name: RMQ_PASSWORD

@@ -46,16 +46,6 @@ fwvconsumer:
     pullPolicy: IfNotPresent
   
   environment:
-    pg_db_host: postgresdb
-    pg_db_user: postgres
-    pg_db_password: "Password1!"
-    pg_db_port: 5432
-    pg_db_name: postgres
-    mssql_db_host: ""
-    mssql_db_user: ""
-    mssql_db_password: "" 
-    mssql_db_database: "" 
-    mssql_db_port: ""
     rmq_username: "consumer"
     rmq_password: "consumer"
     rmq_host: rmq
@@ -71,11 +61,6 @@ fwvapi:
   
   environment:
     machine_password: ""
-    mssql_db_host: ""
-    mssql_db_port: ""
-    mssql_db_user: ""
-    mssql_db_password: ""
-    mssql_db_database: ""
     rmq_username: "fv_api"
     rmq_password: "fv_api"
     rmq_host: ""
@@ -123,3 +108,16 @@ rabbitmq:
     repository: rabbitmq
     tag: 4.0.2-management
     pullPolicy: IfNotPresent
+
+  credentials:
+    username: "rmuser"
+    password: "rmpassword"
+
+
+mssql: 
+  host: "" 
+  port: ""
+  database: ""
+  credentials:
+    user: "" 
+    pass: ""
