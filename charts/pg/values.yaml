@@ -113,7 +113,6 @@ rabbitmq:
     password: "rmpassword"
 
   service:
-    type: 
     hostPort: 32600
 
 mssql: 
